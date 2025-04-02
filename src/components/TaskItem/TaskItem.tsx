@@ -37,7 +37,8 @@ function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
       <CardFooter className="flex justify-between">
         <div className="flex space-x-2">
           <Button variant="outline" size="icon" onClick={handleFavorite}>
-            <Star className={task.favorite ? 'text-yellow-500' : ''} />
+            <Star className={task.favorite ? 'fill-yellow-500 text-yellow-500' : ''}
+    size={20} />
           </Button>
           <TaskActions
             onEdit={() => setIsEditing(true)}
