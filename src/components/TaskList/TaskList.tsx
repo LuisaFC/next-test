@@ -1,21 +1,19 @@
-'use client';
-import TaskItem from '@/components/TaskItem/TaskItem';
 import { Task } from '@/types/task';
+import { ErrorState, EmptyState, TaskListView } from './components';
+import { useTasks } from '@/hooks/useTask';
+import { Loader } from '../Loader/Loader';
 
 interface TaskListProps {
-  tasks: Task[];
-  onUpdate: (updatedTask: Task) => void;
-  onDelete: (taskId: number) => void;
+  readonly onUpdate: (task: Task) => void;
+  readonly onDelete: (taskId: number) => void;
 }
 
-function TaskList({ tasks, onUpdate, onDelete }: TaskListProps) {
-  return (
-    <div className="space-y-4">
-    {tasks.map((task) => (
-      <TaskItem key={task.id} task={task} onUpdate={onUpdate} onDelete={onDelete} />
-    ))}
-  </div>
-  );
-}
+export function TaskList({ onUpdate, onDelete }: TaskListProps) {
+  const { tasks, isLoading, error } = useTasks();
 
-export default TaskList;
+  if (isLoading) return <Loader />;
+  if (error) return <ErrorState error={error} />;
+  if (tasks.length === 0) return <EmptyState />;
+
+  return <TaskListView tasks={tasks} onUpdate={onUpdate} onDelete={onDelete} />;
+}
