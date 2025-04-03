@@ -11,7 +11,6 @@ export const taskService = {
   },
 
   async updateTask(task: Task): Promise<Task> {
-    console.log('Dados enviados para atualização:', task);
     return http.put<Task>(`/api/tasks/${task.id}`, task);
   },
 

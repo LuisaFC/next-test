@@ -52,8 +52,12 @@ function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
         <CardFooter className="flex justify-between">
           <div className="flex space-x-2">
             <Button variant="outline" size="icon" onClick={handleFavorite}>
-              <Star
-                className={task.favorite ? 'fill-yellow-500 text-yellow-500' : ''}
+            <Star
+                className={`transition-colors duration-200 ${
+                  task.favorite
+                    ? 'fill-yellow-500 text-yellow-500'
+                    : 'hover:text-yellow-500'
+                }`}
                 size={20}
               />
             </Button>
