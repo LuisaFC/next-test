@@ -40,7 +40,6 @@ export function AnalyticsChart({
             <Tooltip
               content={<CustomTooltip />}
             />
-            <Legend />
             <Bar dataKey={dataKey}>
               {data.map((entry: ChartData) => (
                 <Cell
