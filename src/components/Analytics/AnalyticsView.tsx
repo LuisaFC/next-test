@@ -1,6 +1,6 @@
 import { AnalyticsHeader } from './AnalyticsHeader';
-import { AnalyticsStats } from './AnalyticsStats';
-import { AnalyticsCharts } from './AnalyticsCharts';
+import { AnalyticsStats } from './Charts/AnalyticsStats';
+import { AnalyticsCharts } from './Charts/AnalyticsCharts';
 import type { AnalyticsData } from '@/app/analytics/types';
 
 interface AnalyticsViewProps {

@@ -12,7 +12,7 @@ import {
   Cell,
   Legend
 } from 'recharts';
-import CustomTooltip from '../Tooltip/Tooltip';
+import CustomTooltip from '../../Tooltip/Tooltip';
 
 export function AnalyticsChart({
   title,
