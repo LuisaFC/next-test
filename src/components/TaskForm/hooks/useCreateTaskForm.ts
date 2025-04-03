@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Task, TASK_STATUS, TASK_PRIORITY, TaskStatusType, TaskPriorityType } from '@/types/task';
 
-interface UseTaskFormProps {
+interface UseCreateTaskFormProps {
   onSubmit: (task: Omit<Task, 'id'>) => void;
   onClose: () => void;
 }
 
-export function useTaskForm({ onSubmit, onClose }: UseTaskFormProps) {
+export function useCreateTaskForm({ onSubmit, onClose }: UseCreateTaskFormProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState<TaskStatusType>(TASK_STATUS.TODO);

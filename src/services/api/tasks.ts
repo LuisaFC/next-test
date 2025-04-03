@@ -8,6 +8,15 @@ export const taskService = {
 
   async createTask(task: Omit<Task, 'id'>): Promise<Task> {
     return http.post<Task>('/api/tasks', task);
+  },
+
+  async updateTask(task: Task): Promise<Task> {
+    console.log('Dados enviados para atualização:', task);
+    return http.put<Task>(`/api/tasks/${task.id}`, task);
+  },
+
+  async deleteTask(taskId: number): Promise<void> {
+    return http.delete(`/api/tasks/${taskId}`);
   }
 
 };

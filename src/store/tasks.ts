@@ -8,8 +8,8 @@ interface TaskStore {
   error: string | null;
   fetchTasks: () => Promise<void>;
   addTask: (newTask: Omit<Task, 'id'>) => Promise<void>;
- // updateTask: (task: Task) => Promise<void>;
-  //deleteTask: (taskId: number) => Promise<void>;
+  updateTask: (task: Task) => Promise<void>;
+  deleteTask: (taskId: number) => Promise<void>;
 }
 
 export const useTaskStore = create<TaskStore>((set) => ({
@@ -40,8 +40,9 @@ export const useTaskStore = create<TaskStore>((set) => ({
     }
   },
 
-  /**updateTask: async (task) => {
+  updateTask: async (task) => {
     try {
+      console.log('Atualizando tarefa:', task);
       await taskService.updateTask(task);
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === task.id ? task : t))
@@ -62,5 +63,5 @@ export const useTaskStore = create<TaskStore>((set) => ({
       set({ error: 'Erro ao deletar tarefa' });
       throw error;
     }
-  }, */
+  },
 }));

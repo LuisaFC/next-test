@@ -2,7 +2,7 @@ import { Task } from '@/types/task';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { TaskFormFields } from './TaskFormFields';
-import { useTaskForm } from '../hooks/useTaskForm';
+import { useEditTaskForm } from '../hooks/useEditTaskForm';
 
 interface TaskEditFormProps {
   task: Task;
@@ -22,8 +22,8 @@ export function TaskEditForm({ task, isOpen, onClose, onUpdate }: TaskEditFormPr
     setStatus,
     setPriority,
     handleSubmit,
-  } = useTaskForm({
-    initialData: task,
+  } = useEditTaskForm({
+    task: task,
     onSubmit: onUpdate,
     onClose,
   });

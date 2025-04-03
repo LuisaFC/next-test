@@ -6,7 +6,7 @@ import { ErrorState, EmptyState, TaskListView } from './components';
 import { Loader } from '../Loader/Loader';
 
 export function TaskList() {
-  const { tasks, isLoading, error, fetchTasks } = useTaskStore();
+  const { tasks, isLoading, error, fetchTasks, updateTask, deleteTask } = useTaskStore();
 
   useEffect(() => {
     fetchTasks();
@@ -18,7 +18,7 @@ export function TaskList() {
 
   return <TaskListView
     tasks={tasks}
-    onUpdate={() => console.log('updateTask')}
-    onDelete={() => console.log('deleteTask')}
+    onUpdate={updateTask}
+    onDelete={deleteTask}
   />;
 }

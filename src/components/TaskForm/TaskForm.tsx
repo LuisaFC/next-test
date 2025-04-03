@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { TaskFormFields } from './components/TaskFormFields';
-import { useTaskForm } from './hooks/useTaskForm';
+
 import { Task } from '@/types/task';
+import { useCreateTaskForm } from './hooks/useCreateTaskForm';
 
 interface TaskFormProps {
   onAddTask: (task: Omit<Task, 'id'>) => void;
@@ -23,7 +24,7 @@ function TaskForm({ onAddTask }: TaskFormProps) {
     setStatus,
     setPriority,
     handleSubmit,
-  } = useTaskForm({
+  } = useCreateTaskForm({
     onSubmit: onAddTask,
     onClose: () => setOpen(false)
   });

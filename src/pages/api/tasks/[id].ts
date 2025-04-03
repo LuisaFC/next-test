@@ -25,20 +25,28 @@ export default async function taskHandler(req: NextApiRequest, res: NextApiRespo
     }
   } else if (req.method === 'PUT') {
     try {
-      const { title, description, status, priority, favorite } = req.body;
-      const updatedTask = await prisma.task.update({
-        where: { id: taskId },
-        data: {
-          title,
-          description,
-          status,
-          priority,
-          favorite,
-        },
+      console.log('API - PUT Request:', {
+        query: req.query,
+        body: req.body
       });
-      res.status(200).json(updatedTask);
+
+      const taskId = Number(req.query.id);
+      const { title, description, status, priority, favorite } = req.body;
+
+      console.log('API - Updating task:', {
+        taskId,
+        data: { title, description, status, priority, favorite }
+      });
+
+      const task = await prisma.task.update({
+        where: { id: taskId },
+        data: { title, description, status, priority, favorite }
+      });
+
+      console.log('API - Task updated:', task);
+      res.status(200).json(task);
     } catch (error) {
-      console.error(error);
+      console.error('API - Update error:', error);
       res.status(500).json({ error: 'Error updating task' });
     }
   } else if (req.method === 'DELETE') {
