@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useTaskStore } from '@/store/tasks';
+import { useTaskStore } from '@/store/tasksStore';
 import { ErrorState, EmptyState, TaskListView } from './components';
 import { Loader } from '../Loader/Loader';
 
 export function TaskList() {
-  const { tasks, isLoading, error, fetchTasks, updateTask, deleteTask } = useTaskStore();
+  const { tasks, isLoading, error, fetchTasks, updateTask, deleteTask, cloneTask } = useTaskStore();
 
   useEffect(() => {
     fetchTasks();
@@ -20,5 +20,6 @@ export function TaskList() {
     tasks={tasks}
     onUpdate={updateTask}
     onDelete={deleteTask}
+    onClone={cloneTask}
   />;
 }

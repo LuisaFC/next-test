@@ -10,6 +10,7 @@ interface TaskStore {
   addTask: (newTask: Omit<Task, 'id'>) => Promise<void>;
   updateTask: (task: Task) => Promise<void>;
   deleteTask: (taskId: number) => Promise<void>;
+  cloneTask: (task: Task) => Promise<void>;
 }
 
 export const useTaskStore = create<TaskStore>((set) => ({
@@ -36,6 +37,31 @@ export const useTaskStore = create<TaskStore>((set) => ({
       set((state) => ({ tasks: [...state.tasks, task] }));
     } catch (error) {
       set({ error: 'Erro ao adicionar tarefa' });
+      throw error;
+    }
+  },
+
+  cloneTask: async (task: Task) => {
+    try {
+      const newTitle = task.title.endsWith("(Cópia)")
+        ? task.title
+        : `${task.title} (Cópia)`;
+
+      const clonedTask = {
+        title: newTitle,
+        description: task.description,
+        status: task.status,
+        priority: task.priority,
+        favorite: false,
+      };
+
+      const newTask = await taskService.createTask(clonedTask);
+      set((state) => ({
+        tasks: [...state.tasks, newTask]
+      }));
+    } catch (error) {
+      console.error('Erro ao clonar tarefa:', error);
+      set({ error: 'Erro ao clonar tarefa' });
       throw error;
     }
   },

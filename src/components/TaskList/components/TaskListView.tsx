@@ -5,9 +5,10 @@ interface TaskListViewProps {
   tasks: Task[];
   onUpdate: (task: Task) => void;
   onDelete: (taskId: number) => void;
+  onClone: (task: Task) => void;
 }
 
-export const TaskListView = ({ tasks, onUpdate, onDelete }: TaskListViewProps) => (
+export const TaskListView = ({ tasks, onUpdate, onDelete, onClone }: TaskListViewProps) => (
   <div className="space-y-4">
     {tasks.map((task) => (
       <TaskItem
@@ -15,6 +16,7 @@ export const TaskListView = ({ tasks, onUpdate, onDelete }: TaskListViewProps) =
         task={task}
         onUpdate={onUpdate}
         onDelete={onDelete}
+        onClone={onClone}
       />
     ))}
   </div>

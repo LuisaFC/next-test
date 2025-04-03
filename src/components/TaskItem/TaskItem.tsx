@@ -15,9 +15,10 @@ interface TaskItemProps {
   readonly task: Task;
   readonly onUpdate: (task: Task) => void;
   readonly onDelete: (taskId: number) => void;
+  readonly onClone: (task: Task) => void;
 }
 
-function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
+function TaskItem({ task, onUpdate, onDelete, onClone }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -28,6 +29,16 @@ function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
   const handleConfirmDelete = () => {
     onDelete(task.id);
     setIsDeleting(false);
+  };
+
+  const handleClone = () => {
+    const clonedTask = {
+      ...task,
+      id: 0,
+      title: `${task.title} (Cópia)`,
+      favorite: false
+    };
+    onClone(clonedTask);
   };
 
   const handleFavorite = () => {
@@ -64,6 +75,7 @@ function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
             <TaskActions
               onEdit={() => setIsEditing(true)}
               onDelete={handleDelete}
+              onClone={handleClone}
             />
           </div>
         </CardFooter>

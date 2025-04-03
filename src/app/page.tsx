@@ -2,7 +2,7 @@
 
 import TaskForm from '@/components/TaskForm/TaskForm';
 import { TaskList } from '@/components/TaskList/TaskList';
-import { useTaskStore } from '@/store/tasks';
+import { useTaskStore } from '@/store/tasksStore';
 import { Task } from '@/types/task';
 
 export default function Home() {
