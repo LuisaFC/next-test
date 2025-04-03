@@ -27,7 +27,6 @@ export default async function tasksHandler(req: NextApiRequest, res: NextApiResp
           favorite,
         },
       });
-      console.log('Tarefa criada:', task);
       res.status(201).json(task);
     } catch (error) {
       console.error(error);

@@ -42,7 +42,6 @@ export const useTaskStore = create<TaskStore>((set) => ({
 
   updateTask: async (task) => {
     try {
-      console.log('Atualizando tarefa:', task);
       await taskService.updateTask(task);
       set((state) => ({
         tasks: state.tasks.map((t) => (t.id === task.id ? task : t))

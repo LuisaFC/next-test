@@ -25,28 +25,18 @@ export default async function taskHandler(req: NextApiRequest, res: NextApiRespo
     }
   } else if (req.method === 'PUT') {
     try {
-      console.log('API - PUT Request:', {
-        query: req.query,
-        body: req.body
-      });
-
       const taskId = Number(req.query.id);
       const { title, description, status, priority, favorite } = req.body;
 
-      console.log('API - Updating task:', {
-        taskId,
-        data: { title, description, status, priority, favorite }
-      });
 
       const task = await prisma.task.update({
         where: { id: taskId },
         data: { title, description, status, priority, favorite }
       });
 
-      console.log('API - Task updated:', task);
       res.status(200).json(task);
     } catch (error) {
-      console.error('API - Update error:', error);
+      console.error(error);
       res.status(500).json({ error: 'Error updating task' });
     }
   } else if (req.method === 'DELETE') {
