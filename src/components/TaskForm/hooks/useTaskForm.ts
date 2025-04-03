@@ -1,47 +1,29 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Task, TASK_STATUS, TASK_PRIORITY, TaskStatusType, TaskPriorityType } from '@/types/task';
 
 interface UseTaskFormProps {
-  initialData?: Task;
-  onSubmit: (task: Task) => void;
+  onSubmit: (task: Omit<Task, 'id'>) => void;
   onClose: () => void;
 }
 
-export function useTaskForm({ initialData, onSubmit, onClose }: UseTaskFormProps) {
-  const [title, setTitle] = useState(initialData?.title ?? '');
-  const [description, setDescription] = useState(initialData?.description ?? '');
-  const [status, setStatus] = useState<TaskStatusType>(initialData?.status ?? TASK_STATUS.TODO);
-  const [priority, setPriority] = useState<TaskPriorityType>(initialData?.priority ?? TASK_PRIORITY.LOW);
-
-  useEffect(() => {
-    if (initialData) {
-      setTitle(initialData.title);
-      setDescription(initialData.description);
-      setStatus(initialData.status);
-      setPriority(initialData.priority);
-    }
-  }, [initialData]);
+export function useTaskForm({ onSubmit, onClose }: UseTaskFormProps) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [status, setStatus] = useState<TaskStatusType>(TASK_STATUS.TODO);
+  const [priority, setPriority] = useState<TaskPriorityType>(TASK_PRIORITY.LOW);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const taskData: Task = {
-      id: initialData?.id ?? Date.now(),
+
+    onSubmit({
       title,
       description,
       status,
       priority,
-      favorite: initialData?.favorite ?? false,
-    };
-    onSubmit(taskData);
-    if (!initialData) resetForm();
-    onClose();
-  };
+      favorite: false
+    });
 
-  const resetForm = () => {
-    setTitle('');
-    setDescription('');
-    setStatus(TASK_STATUS.TODO);
-    setPriority(TASK_PRIORITY.LOW);
+    onClose();
   };
 
   return {
@@ -53,6 +35,6 @@ export function useTaskForm({ initialData, onSubmit, onClose }: UseTaskFormProps
     setDescription,
     setStatus,
     setPriority,
-    handleSubmit,
+    handleSubmit
   };
 }

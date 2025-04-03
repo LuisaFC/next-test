@@ -8,7 +8,7 @@ import { useTaskForm } from './hooks/useTaskForm';
 import { Task } from '@/types/task';
 
 interface TaskFormProps {
-  onAddTask: (task: Task) => void;
+  onAddTask: (task: Omit<Task, 'id'>) => void;
 }
 
 function TaskForm({ onAddTask }: TaskFormProps) {

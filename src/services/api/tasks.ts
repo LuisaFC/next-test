@@ -6,4 +6,8 @@ export const taskService = {
     return http.get<Task[]>('/api/tasks');
   },
 
+  async createTask(task: Omit<Task, 'id'>): Promise<Task> {
+    return http.post<Task>('/api/tasks', task);
+  }
+
 };
