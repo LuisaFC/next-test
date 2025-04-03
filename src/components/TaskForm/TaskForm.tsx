@@ -24,7 +24,7 @@ function TaskForm({ onAddTask }: TaskFormProps) {
     setPriority,
     handleSubmit,
   } = useTaskForm({
-    onAddTask,
+    onSubmit: onAddTask,
     onClose: () => setOpen(false)
   });
 

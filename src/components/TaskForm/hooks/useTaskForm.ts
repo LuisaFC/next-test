@@ -1,29 +1,39 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Task, TASK_STATUS, TASK_PRIORITY, TaskStatusType, TaskPriorityType } from '@/types/task';
 
 interface UseTaskFormProps {
-  onAddTask: (task: Task) => void;
+  initialData?: Task;
+  onSubmit: (task: Task) => void;
   onClose: () => void;
 }
 
-export function useTaskForm({ onAddTask, onClose }: UseTaskFormProps) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [status, setStatus] = useState<TaskStatusType>(TASK_STATUS.TODO);
-  const [priority, setPriority] = useState<TaskPriorityType>(TASK_PRIORITY.LOW);
+export function useTaskForm({ initialData, onSubmit, onClose }: UseTaskFormProps) {
+  const [title, setTitle] = useState(initialData?.title ?? '');
+  const [description, setDescription] = useState(initialData?.description ?? '');
+  const [status, setStatus] = useState<TaskStatusType>(initialData?.status ?? TASK_STATUS.TODO);
+  const [priority, setPriority] = useState<TaskPriorityType>(initialData?.priority ?? TASK_PRIORITY.LOW);
+
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setDescription(initialData.description);
+      setStatus(initialData.status);
+      setPriority(initialData.priority);
+    }
+  }, [initialData]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newTask: Task = {
-      id: Date.now(),
+    const taskData: Task = {
+      id: initialData?.id ?? Date.now(),
       title,
       description,
       status,
       priority,
-      favorite: false,
+      favorite: initialData?.favorite ?? false,
     };
-    onAddTask(newTask);
-    resetForm();
+    onSubmit(taskData);
+    if (!initialData) resetForm();
     onClose();
   };
 
