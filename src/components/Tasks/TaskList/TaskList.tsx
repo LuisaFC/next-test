@@ -12,6 +12,7 @@ export function TaskList() {
     isLoading,
     error,
     filters,
+    searchQuery,
     fetchTasks,
     updateTask,
     deleteTask,
@@ -26,11 +27,12 @@ export function TaskList() {
   if (error) return <div>Erro: {error}</div>;
 
   const filteredTasks = tasks.filter(task => {
+    const matchesSearch = task.title.toLowerCase().includes(searchQuery);
     const matchesStatus = filters.status === 'all' || task.status === filters.status;
     const matchesPriority = filters.priority === 'all' || task.priority === filters.priority;
     const matchesFavorite = !filters.favorite || task.favorite;
 
-    return matchesStatus && matchesPriority && matchesFavorite;
+    return matchesSearch && matchesStatus && matchesPriority && matchesFavorite;
   });
 
   return (

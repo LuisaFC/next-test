@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { TaskFilterDropdown } from './TaskFilterDropdown/TaskListFilterDropdown';
 import TaskForm from '../../TaskForm/TaskForm';
 import { useTaskStore } from '@/store/tasksStore';
+import { SearchInput } from '../../Search/SearchInput';
 
 export function TaskListHeader() {
   const router = useRouter();
@@ -12,7 +13,8 @@ export function TaskListHeader() {
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-4">
-        <h1 className="text-3xl font-bold">Minhas Tarefas</h1>
+        <h1 className="text-3xl font-bold">Tarefas</h1>
+        <SearchInput />
         <TaskFilterDropdown />
       </div>
       <div className="flex items-center gap-4">

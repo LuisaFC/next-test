@@ -11,6 +11,8 @@ interface TaskStore {
     priority: TaskPriorityType | 'all';
     favorite: boolean;
   };
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
   setStatusFilter: (status: TaskStatusType | 'all') => void;
   setPriorityFilter: (priority: TaskPriorityType | 'all') => void;
   setFavoriteFilter: (favorite: boolean) => void;
@@ -31,7 +33,7 @@ export const useTaskStore = create<TaskStore>((set) => ({
     priority: 'all',
     favorite: false,
   },
-
+  searchQuery: '',
   fetchTasks: async () => {
     try {
       set({ isLoading: true });
@@ -127,4 +129,10 @@ export const useTaskStore = create<TaskStore>((set) => ({
       ...state,
       filters: { status: 'all', priority: 'all', favorite: false }
     })),
+
+  setSearchQuery: (query) =>
+    set((state) => ({
+      ...state,
+      searchQuery: query.toLowerCase()
+  })),
 }));
