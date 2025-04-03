@@ -1,7 +1,9 @@
 "use client";
 
+import TaskForm from '@/components/TaskForm/TaskForm';
 import TaskList from '@/components/TaskList/TaskList';
 import { Task } from '@/types/task';
+import { useState } from 'react';
 
 const testTasks: Task[] = [
   {
@@ -32,7 +34,13 @@ const testTasks: Task[] = [
 
 export default function Home() {
 
-  const handleUpdate = (updatedTask: unknown) => {
+  const [tasks, setTasks] = useState<Task[]>(testTasks);
+
+  const handleAddTask = (newTask: Task) => {
+    setTasks([...tasks, newTask]);
+  };
+
+  const handleUpdate = (updatedTask: Task) => {
     console.log('Tarefa atualizada:', updatedTask);
   };
 
@@ -40,9 +48,11 @@ export default function Home() {
     console.log('Tarefa excluída:', taskId);
   };
 
+
   return (
     <main className="container mx-auto p-4 md:p-8">
       <div className="space-y-4">
+        <TaskForm onAddTask={handleAddTask} />
         <TaskList tasks={testTasks} onUpdate={handleUpdate} onDelete={handleDelete} />
       </div>
     </main>
