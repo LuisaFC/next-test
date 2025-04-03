@@ -11,10 +11,14 @@ export default async function analyticsHandler(
     try {
       const totalTasks = await prisma.task.count();
       const completedTasks = await prisma.task.count({
-        where: { status: 'Completed' },
+        where: { status: 'Concluída' },
       });
       const pendingTasks = await prisma.task.count({
-        where: { status: 'To Do' },
+        where: {
+          status: {
+            in: ['A Fazer', 'Em Andamento']
+          }
+        },
       });
 
       const tasksByStatus = await prisma.task.groupBy({
