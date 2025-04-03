@@ -10,9 +10,10 @@ import { useCreateTaskForm } from './hooks/useCreateTaskForm';
 
 interface TaskFormProps {
   onAddTask: (task: Omit<Task, 'id'>) => void;
+  children: React.ReactNode;
 }
 
-function TaskForm({ onAddTask }: TaskFormProps) {
+function TaskForm({ onAddTask, children }: TaskFormProps) {
   const [open, setOpen] = useState(false);
   const {
     title,
@@ -32,9 +33,7 @@ function TaskForm({ onAddTask }: TaskFormProps) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="bg-[var(--button-blue)] hover:bg-[var(--button-blue-hover)] text-white">
-          Adicionar Nova Tarefa
-        </Button>
+        {children}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

@@ -1,5 +1,5 @@
 import { Task } from '@/types/task';
-import TaskItem from '@/components/TaskItem/TaskItem';
+import TaskItem from '@/components/Tasks/TaskItem/TaskItem';
 
 interface TaskListViewProps {
   tasks: Task[];

@@ -1,1 +1,0 @@
-export const EmptyState = () => <div>Nenhuma tarefa encontrada.</div>;

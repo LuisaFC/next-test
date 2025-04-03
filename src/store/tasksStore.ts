@@ -1,11 +1,20 @@
 import { create } from 'zustand';
-import { Task } from '@/types/task';
+import { Task, TaskPriorityType, TaskStatusType } from '@/types/task';
 import { taskService } from '@/services/api/tasks';
 
 interface TaskStore {
   tasks: Task[];
   isLoading: boolean;
   error: string | null;
+  filters: {
+    status: TaskStatusType | 'all';
+    priority: TaskPriorityType | 'all';
+    favorite: boolean;
+  };
+  setStatusFilter: (status: TaskStatusType | 'all') => void;
+  setPriorityFilter: (priority: TaskPriorityType | 'all') => void;
+  setFavoriteFilter: (favorite: boolean) => void;
+  resetFilters: () => void;
   fetchTasks: () => Promise<void>;
   addTask: (newTask: Omit<Task, 'id'>) => Promise<void>;
   updateTask: (task: Task) => Promise<void>;
@@ -17,6 +26,11 @@ export const useTaskStore = create<TaskStore>((set) => ({
   tasks: [],
   isLoading: false,
   error: null,
+  filters: {
+    status: 'all',
+    priority: 'all',
+    favorite: false,
+  },
 
   fetchTasks: async () => {
     try {
@@ -89,4 +103,28 @@ export const useTaskStore = create<TaskStore>((set) => ({
       throw error;
     }
   },
+
+  setStatusFilter: (status) =>
+    set((state) => ({
+      ...state,
+      filters: { ...state.filters, status }
+    })),
+
+  setPriorityFilter: (priority) =>
+    set((state) => ({
+      ...state,
+      filters: { ...state.filters, priority }
+    })),
+
+  setFavoriteFilter: (favorite) =>
+    set((state) => ({
+      ...state,
+      filters: { ...state.filters, favorite }
+    })),
+
+  resetFilters: () =>
+    set((state) => ({
+      ...state,
+      filters: { status: 'all', priority: 'all', favorite: false }
+    })),
 }));
