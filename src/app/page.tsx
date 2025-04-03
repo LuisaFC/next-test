@@ -44,16 +44,15 @@ export default function Home() {
     console.log('Tarefa atualizada:', updatedTask);
   };
 
-  const handleDelete = (taskId: number) => {
-    console.log('Tarefa excluída:', taskId);
+  const handleDeleteTask = (taskId: number) => {
+    setTasks(prev => prev.filter(task => task.id !== taskId));
   };
-
 
   return (
     <main className="container mx-auto p-4 md:p-8">
       <div className="space-y-4">
         <TaskForm onAddTask={handleAddTask} />
-        <TaskList tasks={testTasks} onUpdate={handleUpdate} onDelete={handleDelete} />
+        <TaskList tasks={testTasks} onUpdate={handleUpdate} onDelete={handleDeleteTask} />
       </div>
     </main>
   );

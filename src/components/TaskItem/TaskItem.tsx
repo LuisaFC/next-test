@@ -9,6 +9,7 @@ import { TaskEditForm } from '../TaskForm/components/TaskEditForm';
 import { Task } from '@/types/task';
 import { TaskPriorityBadge } from './components/TaskStatusPriorityBadge';
 import { TaskActions } from './components/TaskAction';
+import { DeleteTask } from './components/DeleteTask';
 
 interface TaskItemProps {
   readonly task: Task;
@@ -18,6 +19,16 @@ interface TaskItemProps {
 
 function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDelete = () => {
+    setIsDeleting(true);
+  };
+
+  const handleConfirmDelete = () => {
+    onDelete(task.id);
+    setIsDeleting(false);
+  };
 
   const handleFavorite = () => {
     onUpdate({ ...task, favorite: !task.favorite });
@@ -48,7 +59,7 @@ function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
             </Button>
             <TaskActions
               onEdit={() => setIsEditing(true)}
-              onDelete={() => onDelete(task.id)}
+              onDelete={handleDelete}
             />
           </div>
         </CardFooter>
@@ -59,6 +70,12 @@ function TaskItem({ task, onUpdate, onDelete }: TaskItemProps) {
         isOpen={isEditing}
         onClose={() => setIsEditing(false)}
         onUpdate={onUpdate}
+      />
+      <DeleteTask
+        isOpen={isDeleting}
+        onClose={() => setIsDeleting(false)}
+        onConfirm={handleConfirmDelete}
+        taskTitle={task.title}
       />
     </>
   );
