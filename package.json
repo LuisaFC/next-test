@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "prisma migrate deploy && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
+  },
+  "engines": {
+    "node": "18.x"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.0",
