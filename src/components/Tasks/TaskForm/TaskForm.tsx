@@ -10,7 +10,7 @@ import { useCreateTaskForm } from './hooks/useCreateTaskForm';
 
 interface TaskFormProps {
   onAddTask: (task: Omit<Task, 'id'>) => void;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 function TaskForm({ onAddTask, children }: TaskFormProps) {
