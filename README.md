@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✅ Lista de Tarefas (Task Manager)
 
-## Getting Started
+## 🌐 Demo Online
+Acesse a aplicação em produção: [Task Manager](https://task-manager-next.vercel.app)
 
-First, run the development server:
+[![Deploy with Vercel](https://vercel.com/button)](https://task-manager-next.vercel.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+## 📝 Descrição
+Uma aplicação web moderna para gerenciamento de tarefas, construída com Next.js e TypeScript. O projeto oferece uma interface intuitiva com suporte a temas claro/escuro e gerenciamento de estado eficiente.
+
+## 🛠️ Tecnologias Utilizadas
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Zustand (Gerenciamento de Estado)
+- React
+- Shadcn/UI
+- Lucide-react
+- Prisma
+- PostgreSQL
+- Vercel
+
+## ⚙️ Funcionalidades
+- ✨ Criação e gerenciamento de tarefas
+- 🌓 Alternância entre tema claro e escuro
+- 📱 Design responsivo
+- 💾 Gerenciamento de estado persistente
+- ⚡ Interface de usuário moderna e intuitiva
+
+## 🚀 Como executar o projeto
+
+### Pré-requisitos
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+
+### Instalação
+
+Clone este repositório
+
+```
+git clone https://github.com/LuisaFC/next-test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Instale as dependências
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Execute o projeto em modo de desenvolvimento
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 📁 Estrutura do Projeto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+├── app/
+│ └── page.tsx # Página principal
+├── components/
+│ ├── Analytics/ # Componentes relacionados a dashboard
+│ ├── Tasks/ # Componentes relacionados a tarefas
+│ └── ThemeSwitcher/ # Componente de alternância de tema
+├── Context/
+│ └── ThemeContext.tsx # Contexto para gerenciamento de tema
+├── hooks/
+│ ├── useAnalytics.ts # Hook para gerenciamento do dashboard
+│ └── useTasks.ts # Hook para gerenciamento das tarefas
+├── pages/
+│ ├── api/ # Rotas da API
+├── services/
+│ ├── http.ts # Configuração do cliente HTTP
+│ └── api # Serviços relacionados às tarefas e dashboard
+├── store/
+│ └── tasksStore.ts # Estado global com Zustand
+└── types/ # Tipos e interfaces
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
 
-## Deploy on Vercel
+## 🔧 Configuração
+O projeto utiliza as seguintes configurações padrão:
+- TypeScript para tipagem estática
+- Tailwind CSS para estilização
+- Next.js App Router para roteamento
+- Zustand para gerenciamento de estado
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🤝 Como Contribuir
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Faça commit das suas alterações (`git commit -m 'Add some AmazingFeature'`)
+4. Faça push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📝 Licença
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+⭐ Desenvolvido com ♥ por Luísa
