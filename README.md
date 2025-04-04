@@ -3,8 +3,6 @@
 ## 🌐 Demo Online
 Acesse a aplicação em produção: [Task Manager](https://task-management-delta-nine.vercel.app/)
 
-[![Deploy with Vercel](https://vercel.com/button)]
-
 
 ## 📝 Descrição
 Uma aplicação web moderna para gerenciamento de tarefas, construída com Next.js e TypeScript. O projeto oferece uma interface intuitiva com suporte a temas claro/escuro e gerenciamento de estado eficiente.
