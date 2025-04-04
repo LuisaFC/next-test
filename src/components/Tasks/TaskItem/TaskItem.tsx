@@ -7,7 +7,7 @@ import { Star } from 'lucide-react';
 import { TaskStatusBadge } from './components/TaskStatusBadge';
 import { TaskEditForm } from '../TaskForm/components/TaskEditForm';
 import { Task } from '@/types/task';
-import { TaskPriorityBadge } from './components/TaskStatusPriorityBadge';
+import { TaskPriorityBadge } from './components/TaskPriorityBadge';
 import { TaskActions } from './components/TaskAction';
 import { DeleteTask } from './components/DeleteTask';
 
