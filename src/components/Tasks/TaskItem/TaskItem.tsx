@@ -5,11 +5,11 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from '@/components/ui/button';
 import { Star } from 'lucide-react';
 import { TaskEditForm } from '../TaskForm/components/TaskEditForm';
-import { Task, TaskStatusType } from '@/types/task';
-import { TaskPriorityBadge } from './components/TaskPriorityBadge';
+import { Task, TaskPriorityType, TaskStatusType } from '@/types/task';
 import { TaskActions } from './components/TaskAction';
 import { DeleteTask } from './components/DeleteTask';
-import { TaskStatusDropdown } from './components/taskStatusDropdown';
+import { TaskStatusDropdown } from './components/TaskStatusDropdown';
+import { TaskPriorityDropdown } from './components/TaskPriorityDropdown';
 
 interface TaskItemProps {
   readonly task: Task;
@@ -49,6 +49,10 @@ function TaskItem({ task, onUpdate, onDelete, onClone }: TaskItemProps) {
     onUpdate({ ...task, status: newStatus as TaskStatusType });
   };
 
+  const handlePriorityChange = (taskId: number, newPriority: string) => {
+    onUpdate({ ...task, priority: newPriority as TaskPriorityType });
+  };
+
 
   return (
     <>
@@ -61,7 +65,11 @@ function TaskItem({ task, onUpdate, onDelete, onClone }: TaskItemProps) {
               taskId={task.id}
               onStatusChange={handleStatusChange}
             />
-            <TaskPriorityBadge priority={task.priority} />
+            <TaskPriorityDropdown
+              priority={task.priority}
+              taskId={task.id}
+              onPriorityChange={handlePriorityChange}
+            />
           </div>
         </CardHeader>
 

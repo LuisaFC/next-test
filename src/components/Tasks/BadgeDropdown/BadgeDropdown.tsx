@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { TaskStatusBadge } from './TaskStatusBadge';
+import { useState, ReactNode } from 'react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,30 +6,37 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
-interface TaskStatusDropdownProps {
-  status: string;
-  taskId: number;
-  onStatusChange: (taskId: number, status: string) => void;
+interface BadgeDropdownProps<T extends string> {
+  value: T;
+  options: T[];
+  itemId: number;
+  onChange: (itemId: number, value: T) => void;
+  renderBadge: (value: T) => ReactNode;
 }
 
-export function TaskStatusDropdown({ status, taskId, onStatusChange }: TaskStatusDropdownProps) {
+export function BadgeDropdown<T extends string>({
+  value,
+  options,
+  itemId,
+  onChange,
+  renderBadge
+}: BadgeDropdownProps<T>) {
   const [isOpen, setIsOpen] = useState(false);
-  const statusOptions = ['A Fazer', 'Em Andamento', 'Concluído'];
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
         <div className="cursor-pointer">
-          <TaskStatusBadge status={status} />
+          {renderBadge(value)}
         </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
-        {statusOptions.map((option) => (
+        {options.map((option) => (
           <DropdownMenuItem
             key={option}
-            className={option === status ? 'bg-gray-100 font-medium' : ''}
+            className={option === value ? 'bg-gray-100 font-medium' : ''}
             onClick={() => {
-              onStatusChange(taskId, option);
+              onChange(itemId, option);
               setIsOpen(false);
             }}
           >
