@@ -1,6 +1,7 @@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 import { TASK_STATUS, TASK_PRIORITY, TaskStatusType, TaskPriorityType } from '@/types/task';
 
 interface TaskFormFieldsProps {
@@ -30,6 +31,7 @@ export function TaskFormFields({
         <Label htmlFor="title">Título</Label>
         <Input
           type="text"
+          className='mt-2'
           id="title"
           value={title}
           onChange={(e) => onTitleChange(e.target.value)}
@@ -37,8 +39,8 @@ export function TaskFormFields({
       </div>
       <div>
         <Label htmlFor="description">Descrição</Label>
-        <Input
-          type="text"
+        <Textarea
+          className='mt-2'
           id="description"
           value={description}
           onChange={(e) => onDescriptionChange(e.target.value)}
@@ -47,7 +49,7 @@ export function TaskFormFields({
       <div>
         <Label htmlFor="status">Status</Label>
         <Select value={status} onValueChange={onStatusChange}>
-          <SelectTrigger>
+          <SelectTrigger className='mt-2'>
             <SelectValue placeholder="Selecione o status" />
           </SelectTrigger>
           <SelectContent>
@@ -60,7 +62,7 @@ export function TaskFormFields({
       <div>
         <Label htmlFor="priority">Prioridade</Label>
         <Select value={priority} onValueChange={onPriorityChange}>
-          <SelectTrigger>
+          <SelectTrigger className='mt-2'>
             <SelectValue placeholder="Selecione a prioridade" />
           </SelectTrigger>
           <SelectContent>
