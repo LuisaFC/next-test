@@ -1,7 +1,8 @@
 import { AnalyticsHeader } from './AnalyticsHeader';
 import { AnalyticsStats } from './Charts/AnalyticsStats';
 import { AnalyticsCharts } from './Charts/AnalyticsCharts';
-import type { AnalyticsData } from '@/app/analytics/types';
+import { AnalyticsData } from '@/types/analytics';
+
 
 interface AnalyticsViewProps {
   data: AnalyticsData;
