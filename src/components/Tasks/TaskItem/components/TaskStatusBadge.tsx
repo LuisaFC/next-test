@@ -11,7 +11,6 @@ export const TaskStatusBadge = ({ status }: TaskStatusBadgeProps) => {
     'Concluído': 'bg-[var(--sidebar-primary)] text-[var(--sidebar-primary-foreground)] hover:bg-[var(--sidebar-primary-hover)] hover:text-[var(--chart-5-foreground)]',
   } as const;
 
-  // Usando o operador de coalescência nula para fornecer um valor padrão
   const colorClass = statusColors[status as keyof typeof statusColors] ?? 'bg-gray-100 text-gray-800 hover:bg-gray-200';
 
   return (

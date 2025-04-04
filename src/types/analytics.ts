@@ -15,7 +15,6 @@ export interface TaskPriorityGroup extends TaskCount {
   priority: TaskPriority;
 }
 
-// Dados principais
 export interface AnalyticsData {
   totalTasks: number;
   completedTasks: number;
@@ -27,7 +26,6 @@ export interface AnalyticsData {
   tasksByPriority: TaskPriorityGroup[];
 }
 
-// Props dos componentes
 export interface AnalyticsViewProps {
   data: AnalyticsData;
   onRefresh: () => void;
@@ -61,7 +59,6 @@ export interface AnalyticsChartProps {
   colors: Record<string, string>;
 }
 
-// Tipo auxiliar para os gráficos
 export type ChartData = {
   status?: string;
   priority?: string;

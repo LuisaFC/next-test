@@ -12,9 +12,9 @@ export function AnalyticsHeader({ onRefresh }: AnalyticsHeaderProps) {
       <Button
           variant="ghost"
           onClick={() => router.push('/')}
-          className="!h-10 !w-10 hover:bg-muted mr-1" // Forçando tamanho com !important
+          className="!h-10 !w-10 hover:bg-muted mr-1"
         >
-          <ArrowLeft className="!h-6 !w-6" /> {/* Forçando tamanho com !important */}
+          <ArrowLeft className="!h-6 !w-6" />
         </Button>
         <div>
           <h1 className="text-3xl font-bold">Painel de Controle</h1>
