@@ -49,10 +49,12 @@ function ChartsSkeleton() {
 
 export function AnalyticsSkeleton() {
   return (
-    <div className="space-y-8">
-      <HeaderSkeleton />
-      <StatsGridSkeleton />
-      <ChartsSkeleton />
+    <div className="container mx-auto p-4 md:p-8">
+      <div className="space-y-8">
+        <HeaderSkeleton />
+        <StatsGridSkeleton />
+        <ChartsSkeleton />
+      </div>
     </div>
   );
 }
