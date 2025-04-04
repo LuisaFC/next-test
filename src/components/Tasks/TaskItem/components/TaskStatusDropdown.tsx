@@ -8,7 +8,7 @@ interface TaskStatusDropdownProps {
 }
 
 export function TaskStatusDropdown({ status, taskId, onStatusChange }: TaskStatusDropdownProps) {
-  const statusOptions = ['A Fazer', 'Em Andamento', 'Concluído'];
+  const statusOptions = ['A Fazer', 'Em Andamento', 'Concluída'];
 
   return (
     <BadgeDropdown
