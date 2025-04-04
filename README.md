@@ -1,9 +1,9 @@
 # ✅ Lista de Tarefas (Task Manager)
 
 ## 🌐 Demo Online
-Acesse a aplicação em produção: [Task Manager](https://task-manager-next.vercel.app)
+Acesse a aplicação em produção: [Task Manager](https://task-management-delta-nine.vercel.app/)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://task-manager-next.vercel.app)
+[![Deploy with Vercel](https://vercel.com/button)]
 
 
 ## 📝 Descrição
@@ -85,6 +85,13 @@ O projeto utiliza as seguintes configurações padrão:
 - Tailwind CSS para estilização
 - Next.js App Router para roteamento
 - Zustand para gerenciamento de estado
+
+## Imagens do projeto
+
+![image](./public/images/todo.png)
+![image](./public/images/dashboard.png)
+
+
 
 ## 🤝 Como Contribuir
 1. Faça um fork do projeto
